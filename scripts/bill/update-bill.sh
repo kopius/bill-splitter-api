@@ -11,8 +11,7 @@ curl --include --request PATCH http://localhost:3000/bills/2 \
 
 # deployed
 
-curl --include --request PATCH http://$DEPLOYED_URL/bills/2 \
-  --header "Authorization: Token token=$TOKEN" \
+curl --include --request PATCH https://bill-splitter-api.herokuapp.com/bills/2 \
   --header "Content-Type: application/json" \
   --data '{
     "bill": {
@@ -20,3 +19,6 @@ curl --include --request PATCH http://$DEPLOYED_URL/bills/2 \
       "total_amount": 150
     }
   }'
+
+# authorization header
+--header "Authorization: Token token=$TOKEN" \
