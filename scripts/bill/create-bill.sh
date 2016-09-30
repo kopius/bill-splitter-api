@@ -11,8 +11,7 @@ curl --include --request POST http://localhost:3000/bills \
   }'
 
 # deployed
-curl --include --request POST http://$DEPLOYED_URL/bills \
-  --header "Authorization: Token token=$TOKEN" \
+curl --include --request POST https://bill-splitter-api.herokuapp.com/bills \
   --header "Content-Type: application/json" \
   --data '{
     "bill": {
@@ -21,3 +20,6 @@ curl --include --request POST http://$DEPLOYED_URL/bills \
       "user_id": 1
     }
   }'
+
+  # authorization header
+  --header "Authorization: Token token=$TOKEN" \
