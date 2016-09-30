@@ -1,4 +1,4 @@
-class BillsController < ApplicationController
+class BillsController < ProtectedController
   before_action :set_bill, only: [:show, :update, :destroy]
 
   # GET /bills
@@ -18,7 +18,7 @@ class BillsController < ApplicationController
   # POST /bills
   # POST /bills.json
   def create
-    @bill = Bill.new(bill_params)
+    @bill = current_user.bills.build(bill_params)
 
     if @bill.save
       render json: @bill, status: :created, location: @bill
@@ -49,11 +49,11 @@ class BillsController < ApplicationController
 
   private
 
-    def set_bill
-      @bill = Bill.find(params[:id])
-    end
+  def set_bill
+    @bill = current_user.bills.find(params[:id])
+  end
 
-    def bill_params
-      params.require(:bill).permit(:num_people, :total_amount, :user_id)
-    end
+  def bill_params
+    params.require(:bill).permit(:num_people, :total_amount, :user_id)
+  end
 end

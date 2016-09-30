@@ -1,8 +1,10 @@
 # localhost
-curl --include --request GET http://localhost:3000/bills
+curl --include --request GET http://localhost:3000/bills \
+  --header "Authorization: Token token=BAhJIiU4OTA4ZGU5MzQyNDA4YjNiYTYyNmNiMDkxMTdhMzA0YgY6BkVG--6d6616355b23df0d8635585a271bbf3422d40582"
 
 # deployed
-curl --include --request GET https://bill-splitter-api.herokuapp.com/bills
+curl --include --request GET https://bill-splitter-api.herokuapp.com/bills \
+  --header "Authorization: Token token="
 
 # authorization header
 --header "Authorization: Token token=$TOKEN" \
