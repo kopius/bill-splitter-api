@@ -16,3 +16,11 @@
 #                password: 'abc123',
 #                password_confirmation: nil)
 # end
+
+User.create(email: 'oz@oz.com',
+            password: '123',
+            password_confirmation: '123')
+
+Bill.create(num_people: 4,
+            total_amount: 100,
+            user_id: 1)

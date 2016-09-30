@@ -54,6 +54,6 @@ class BillsController < ApplicationController
     end
 
     def bill_params
-      params.require(:bill).permit(:group_size, :total_amount, :user_id)
+      params.require(:bill).permit(:num_people, :total_amount, :user_id)
     end
 end

@@ -1,4 +1,4 @@
 class BillSerializer < ActiveModel::Serializer
-  attributes :id, :group_size, :total_amount
+  attributes :id, :num_people, :total_amount
   belongs_to :user
 end
