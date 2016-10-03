@@ -4,7 +4,7 @@ class BillsController < ProtectedController
   # GET /bills
   # GET /bills.json
   def index
-    @bills = Bill.all
+    @bills = current_user.bills
 
     render json: @bills
   end
