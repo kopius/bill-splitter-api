@@ -33,7 +33,7 @@ class BillsController < ProtectedController
     @bill = Bill.find(params[:id])
 
     if @bill.update(bill_params)
-      head :no_content
+      render json: @bill, status: :updated
     else
       render json: @bill.errors, status: :unprocessable_entity
     end
