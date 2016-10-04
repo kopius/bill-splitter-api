@@ -41,7 +41,7 @@ module BillSplitter
     # Cross-Origin Resource Sharing
     config.middleware.use Rack::Cors do
       allow do
-        origins ENV['CLIENT_ORIGIN'] || 'https://kopiusmaximus.github.io/bill-splitter-client/'
+        origins ENV['CLIENT_ORIGIN'] || 'https://kopiusmaximus.github.io'
         resource '*',
                  headers: :any,
                  methods: [:options, :get,
