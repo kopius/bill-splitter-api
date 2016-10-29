@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :shares, except: [:new, :edit]
   resources :bills, except: [:new, :edit]
   resources :examples, except: [:new, :edit]
   post '/sign-up' => 'users#signup'
