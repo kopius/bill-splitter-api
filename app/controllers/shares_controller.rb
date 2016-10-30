@@ -4,7 +4,10 @@ class SharesController < ProtectedController
   # GET /bills/:id/shares
   # GET /bills/:id/shares.json
   def index
-    @shares = Share.all
+    @bill = current_user.bills.find(params[:bill_id])
+    @shares = @bill.shares
+
+    # @shares = Share.find(params[:bill_id])
 
     render json: @shares
   end
