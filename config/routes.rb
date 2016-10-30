@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  resources :shares, except: [:new, :edit]
-  resources :bills, except: [:new, :edit]
+  resources :bills, except: [:new, :edit] do
+    resources :shares, only: [:index, :create]
+  end
+  resources :shares, only: [:show, :update, :destroy]
   resources :examples, except: [:new, :edit]
   post '/sign-up' => 'users#signup'
   post '/sign-in' => 'users#signin'

@@ -1,24 +1,24 @@
-class SharesController < ApplicationController
+class SharesController < ProtectedController
   before_action :set_share, only: [:show, :update, :destroy]
 
-  # GET /shares
-  # GET /shares.json
+  # GET /bills/:id/shares
+  # GET /bills/:id/shares.json
   def index
     @shares = Share.all
 
     render json: @shares
   end
 
-  # GET /shares/1
-  # GET /shares/1.json
+  # GET /bills/:bill_id/shares/:id
+  # GET /bills/:bill_id/shares/:id.json
   def show
     render json: @share
   end
 
-  # POST /shares
-  # POST /shares.json
+  # POST /bills/:bill_id/shares
+  # POST /bills/:bill_id/shares.json
   def create
-    @share = Share.new(share_params)
+    @share = Share.create(share_params)
 
     if @share.save
       render json: @share, status: :created, location: @share
@@ -27,8 +27,8 @@ class SharesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /shares/1
-  # PATCH/PUT /shares/1.json
+  # PATCH/PUT /bills/:bill_id/shares/:id
+  # PATCH/PUT /bills/:bill_id/shares/:id.json
   def update
     @share = Share.find(params[:id])
 
@@ -39,8 +39,8 @@ class SharesController < ApplicationController
     end
   end
 
-  # DELETE /shares/1
-  # DELETE /shares/1.json
+  # DELETE /bills/:bill_id/shares/:id
+  # DELETE /bills/:id/shares/:id.json
   def destroy
     @share.destroy
 
