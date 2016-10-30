@@ -49,11 +49,11 @@ class SharesController < ApplicationController
 
   private
 
-    def set_share
-      @share = Share.find(params[:id])
-    end
+  def set_share
+    @share = Share.find(params[:id])
+  end
 
-    def share_params
-      params[:share]
-    end
+  def share_params
+    params.require(:share).permit(:person_name, :base_cost, :cost_adjustment, :bill_id)
+  end
 end
