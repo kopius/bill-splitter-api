@@ -4,8 +4,7 @@ curl --include --request PATCH http://localhost:3000/shares/$ID \
   --header "Content-Type: application/json" \
   --data '{
     "share": {
-      "base_cost": "30.00",
-      "bill_id": 1
+      "cost_adjustment": 5.00
     }
   }'
 
@@ -16,7 +15,6 @@ curl --include --request PATCH https://bill-splitter-api.herokuapp.com/shares/$I
   --header "Content-Type: application/json" \
   --data '{
     "share": {
-      "base_cost": "30.00",
-      "bill_id": 1
+      "cost_adjustment": 5.00
     }
   }'
