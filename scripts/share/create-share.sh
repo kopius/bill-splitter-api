@@ -1,5 +1,5 @@
 # localhost
-curl --include --request POST http://localhost:3000/shares \
+curl --include --request POST http://localhost:3000/bills/$BILL_ID/shares \
   --header "Authorization: Token token=$TOKEN" \
   --header "Content-Type: application/json" \
   --data '{
@@ -12,7 +12,7 @@ curl --include --request POST http://localhost:3000/shares \
 
 
 # deployed
-curl --include --request POST https://bill-splitter-api.herokuapp.com/shares \
+curl --include --request POST https://bill-splitter-api.herokuapp.com/bills/$BILL_ID/shares \
   --header "Authorization: Token token=$TOKEN" \
   --header "Content-Type: application/json" \
   --data '{
