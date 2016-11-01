@@ -9,7 +9,7 @@ class SharesController < ProtectedController
 
     # @shares = Share.find(params[:bill_id])
 
-    render json: @shares
+    render json: @shares.to_json(methods: :adjusted_cost)
   end
 
   # GET /bills/:bill_id/shares/:id
