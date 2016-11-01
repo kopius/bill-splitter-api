@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160930154925) do
+ActiveRecord::Schema.define(version: 20161101230448) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "adjustments", force: :cascade do |t|
+    t.string   "label"
+    t.decimal  "price"
+    t.boolean  "did_participate"
+    t.integer  "num_participants"
+    t.integer  "share_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "adjustments", ["share_id"], name: "index_adjustments_on_share_id", using: :btree
 
   create_table "bills", force: :cascade do |t|
     t.integer  "num_people"
@@ -35,6 +47,17 @@ ActiveRecord::Schema.define(version: 20160930154925) do
 
   add_index "examples", ["user_id"], name: "index_examples_on_user_id", using: :btree
 
+  create_table "shares", force: :cascade do |t|
+    t.string   "person_name"
+    t.decimal  "base_cost"
+    t.decimal  "cost_adjustment"
+    t.integer  "bill_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "shares", ["bill_id"], name: "index_shares_on_bill_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",           null: false
     t.string   "token",           null: false
@@ -46,6 +69,8 @@ ActiveRecord::Schema.define(version: 20160930154925) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["token"], name: "index_users_on_token", unique: true, using: :btree
 
+  add_foreign_key "adjustments", "shares"
   add_foreign_key "bills", "users"
   add_foreign_key "examples", "users"
+  add_foreign_key "shares", "bills"
 end
