@@ -51,11 +51,15 @@ class AdjustmentsController < ProtectedController
 
   private
 
-    def set_adjustment
-      @adjustment = Adjustment.find(params[:id])
-    end
+  def set_adjustment
+    @adjustment = Adjustment.find(params[:id])
+  end
 
-    def adjustment_params
-      params.require(:adjustment).permit(:label, :price, :did_participate, :num_participants, :share_id)
-    end
+  def adjustment_params
+    params.require(:adjustment).permit(:label,
+                                       :price,
+                                       :did_participate,
+                                       :num_participants,
+                                       :share_id)
+  end
 end
