@@ -15,7 +15,7 @@ class SharesController < ProtectedController
   # GET /bills/:bill_id/shares/:id
   # GET /bills/:bill_id/shares/:id.json
   def show
-    render json: @share
+    render json: @share.to_json(methods: :adjusted_cost)
   end
 
   # POST /bills/:bill_id/shares
