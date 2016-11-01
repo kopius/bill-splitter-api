@@ -57,6 +57,9 @@ class SharesController < ProtectedController
   end
 
   def share_params
-    params.require(:share).permit(:person_name, :base_cost, :cost_adjustment, :bill_id)
+    params.require(:share).permit(:person_name,
+                                  :base_cost,
+                                  :cost_adjustment,
+                                  :bill_id)
   end
 end
