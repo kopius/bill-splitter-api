@@ -24,7 +24,9 @@ class SharesController < ProtectedController
     @share = Share.create(share_params)
 
     if @share.save
-      render json: @share, status: :created, location: @share
+      render json: @share.to_json(methods: :adjusted_cost),
+             status: :created,
+             location: @share
     else
       render json: @share.errors, status: :unprocessable_entity
     end
