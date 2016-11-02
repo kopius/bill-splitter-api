@@ -15,6 +15,7 @@ class SharesController < ProtectedController
   # GET /bills/:bill_id/shares/:id
   # GET /bills/:bill_id/shares/:id.json
   def show
+    puts 'in the show method on shares'
     render json: @share.to_json(methods: :adjusted_cost)
   end
 
@@ -61,7 +62,7 @@ class SharesController < ProtectedController
   def share_params
     params.require(:share).permit(:person_name,
                                   :base_cost,
-                                  :cost_adjustment,
+                                  # :cost_adjustment,
                                   :bill_id)
   end
 end
