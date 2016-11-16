@@ -3,8 +3,7 @@ class Share < ActiveRecord::Base
   has_many :adjustments, dependent: :destroy
 
   def adjusted_cost
-    puts adjustments
-    return false if !adjustments
+    return false unless adjustments
 
     bill = Bill.find(bill_id)
     num_people = bill.num_people
