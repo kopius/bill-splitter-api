@@ -10,9 +10,10 @@ class Share < ActiveRecord::Base
     cost_adjustment = 0
     adjustments.each do |adjustment|
       if adjustment.did_participate
-        cost_adjustment += adjustment.price / adjustment.num_participants
+        cost_adjustment += (adjustment.price / adjustment.num_participants) -
+                           (adjustment.price / num_people)
       else
-        cost_adjustment -= adjustment.price / (num_people - adjustment.num_participants)
+        cost_adjustment -= adjustment.price / num_people
       end
     end
     base_cost + cost_adjustment
