@@ -57,6 +57,9 @@ class BillsController < ProtectedController
   end
 
   def bill_params
-    params.require(:bill).permit(:num_people, :total_amount, :user_id)
+    params.require(:bill).permit(:num_people,
+                                 :total_amount,
+                                 :user_id,
+                                 shares_attributes: [:person_name, :base_cost])
   end
 end
